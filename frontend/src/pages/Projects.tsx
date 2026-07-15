@@ -1,93 +1,71 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-
+import { useNavigate } from "react-router-dom";
+import { deleteProject } from "../services/projectService";
 
 interface Project {
-
     id: number;
-
     name: string;
-
     description: string;
-
     created_by: string;
-
 }
-
 
 function Projects() {
 
-
     const [projects, setProjects] = useState<Project[]>([]);
-
 
     const [name, setName] = useState("");
 
     const [description, setDescription] = useState("");
 
+    const navigate = useNavigate();
 
 
-    // Runs when page loads
-    // Fetch existing projects from backend
     useEffect(() => {
-
         fetchProjects();
-
     }, []);
 
 
 
-    async function fetchProjects(){
+    async function fetchProjects() {
 
         try {
 
-            const response = await api.get(
-                "/projects/"
-            );
+            const response = await api.get("/projects/");
 
+            setProjects(response.data);
 
-            setProjects(
-                response.data
-            );
-
-
-        } catch(error){
+        } catch (error) {
 
             console.log(error);
 
         }
-
     }
 
 
 
-
-    async function createProject(){
-
+    async function createProject() {
 
         try {
-
 
             await api.post(
                 "/projects/",
                 {
                     name,
-                    description
+                    description,
                 }
             );
 
 
-            // Refresh project list after creation
             fetchProjects();
 
 
-            // Clear form
             setName("");
 
             setDescription("");
 
 
-        } catch(error){
+        } catch (error) {
 
             console.log(error);
 
@@ -95,6 +73,35 @@ function Projects() {
 
     }
 
+
+
+    async function handleDelete(
+        e: React.MouseEvent,
+        id: number
+    ) {
+
+        e.stopPropagation();
+
+
+        if (!window.confirm("Delete project?")) {
+            return;
+        }
+
+
+        try {
+
+            await deleteProject(id);
+
+            fetchProjects();
+
+
+        } catch (error) {
+
+            console.log(error);
+
+        }
+
+    }
 
 
 
@@ -121,10 +128,10 @@ function Projects() {
                 <input
 
                     className="
-                    w-full 
-                    p-3 
-                    rounded-lg 
-                    bg-slate-800 
+                    w-full
+                    p-3
+                    rounded-lg
+                    bg-slate-800
                     mb-3
                     "
 
@@ -133,7 +140,7 @@ function Projects() {
                     value={name}
 
                     onChange={
-                        e=>setName(e.target.value)
+                        (e) => setName(e.target.value)
                     }
 
                 />
@@ -143,10 +150,10 @@ function Projects() {
                 <input
 
                     className="
-                    w-full 
-                    p-3 
-                    rounded-lg 
-                    bg-slate-800 
+                    w-full
+                    p-3
+                    rounded-lg
+                    bg-slate-800
                     mb-4
                     "
 
@@ -155,7 +162,7 @@ function Projects() {
                     value={description}
 
                     onChange={
-                        e=>setDescription(e.target.value)
+                        (e) => setDescription(e.target.value)
                     }
 
                 />
@@ -175,7 +182,6 @@ function Projects() {
                     "
 
                 >
-
                     Create
 
                 </button>
@@ -191,56 +197,72 @@ function Projects() {
 
 
                 {
-                    projects.map(
-                        project=>(
-
+                    projects.map((project) => (
 
                         <div
 
-                        key={project.id}
+                            key={project.id}
 
-                        className="
-                        bg-white/10
-                        p-6
-                        rounded-2xl
-                        border
-                        border-white/10
-                        "
+                            onClick={() =>
+                                navigate(`/projects/${project.id}`)
+                            }
+
+                            className="
+                            bg-white/10
+                            p-6
+                            rounded-2xl
+                            border
+                            border-white/10
+                            cursor-pointer
+                            hover:bg-white/20
+                            transition
+                            "
 
                         >
 
 
                             <h2 className="text-2xl font-bold">
-
                                 {project.name}
-
                             </h2>
 
 
+
                             <p className="text-gray-300 mt-3">
-
                                 {project.description}
-
                             </p>
 
 
 
                             <p className="text-sm text-gray-400 mt-4">
-
-                                Created by:
-                                {" "}
-                                {project.created_by}
-
+                                Created by: {project.created_by}
                             </p>
 
 
 
+                            <button
+
+                                onClick={(e) =>
+                                    handleDelete(e, project.id)
+                                }
+
+                                className="
+                                mt-5
+                                bg-red-600
+                                px-4
+                                py-2
+                                rounded-lg
+                                hover:bg-red-500
+                                "
+
+                            >
+                                Delete
+
+                            </button>
+
+
                         </div>
 
-
-                        )
-
-                    )
+                    ))
                 }
 
 
@@ -250,7 +272,6 @@ function Projects() {
         </div>
 
     );
-
 
 }
 

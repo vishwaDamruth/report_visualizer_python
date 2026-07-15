@@ -30,4 +30,6 @@ urlpatterns = [
         include("apps.projects.urls")
     ),
 
+    path("api/", include("apps.reports.urls")),
+
 ]

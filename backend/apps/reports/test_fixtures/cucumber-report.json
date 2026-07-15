@@ -1,0 +1,80 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "test-suite;successful-login",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "successful login",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {"status": "passed", "duration": 1000000000}
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I launch the browser",
+            "match": {"location": "steps\\stepdef.steps.ts:49"},
+            "result": {"status": "passed", "duration": 2500000000}
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {"status": "passed", "duration": 500000000}
+          }
+        ],
+        "tags": [{"name": "@smoke", "line": 13}],
+        "type": "scenario"
+      },
+      {
+        "id": "test-suite;failed-login",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "failed login",
+        "retry_count": 1,
+        "start_timestamp": "2026-07-14T12:00:00Z",
+        "finish_timestamp": "2026-07-14T12:00:05Z",
+        "steps": [
+          {
+            "keyword": "Then ",
+            "line": 24,
+            "name": "I should be on the dashboard page",
+            "result": {
+              "status": "failed",
+              "duration": 5000000000,
+              "error_message": "Expected dashboard URL but received login URL"
+            }
+          }
+        ],
+        "tags": ["@negative"],
+        "type": "scenario"
+      },
+      {
+        "id": "test-suite;pending-login",
+        "keyword": "Scenario",
+        "line": 35,
+        "name": "pending login",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "an undefined step",
+            "result": {"status": "undefined", "duration": 0}
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "test-suite",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Test Suite",
+    "tags": [{"name": "@web", "line": 1}],
+    "uri": "features\\test.feature"
+  }
+]

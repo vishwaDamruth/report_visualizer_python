@@ -1,0 +1,542 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "test-suite;verify-login-works-with-valid-users",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "verify login works with valid users",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 7235413800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I launch the browser",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23442999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I navigate to Application",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4289118800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I enter username \"root\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1312909500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I enter password \"root@123\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 466795200
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I click the Sign In button",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:98"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3776159500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "I should be on the dashboard page",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:124"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2503599399
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 891220600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "test-suite;verify-login-works-with-valid-users",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "verify login works with valid users",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 3590020199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I launch the browser",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1786400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I navigate to Application",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 568149499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I enter username \"rootw\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 208640599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 8,
+            "name": "I enter password \"root@123\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 45599900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "I click the Sign In button",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:98"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 678429600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "I should be on the dashboard page",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:124"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5025234100,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"http://localhost:5173/\u001b[7mdashboard\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"http://localhost:5173/\u001b[7mlogin\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"to.have.url\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at captureRawStack (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toHaveURL (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at World.<anonymous> (D:\\PROJECTS\\reports\\Automation\\steps\\stepdef.steps.ts:128:24)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 534561499
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "test-suite;verify-non-valid-users-cannot-login-(negative-cases)",
+        "keyword": "Scenario",
+        "line": 28,
+        "name": "verify non valid users cannot login (negative cases)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1046865799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "I launch the browser",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9621800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I navigate to Application",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1009583799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "I enter username \"notanuser\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 259490499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I enter password \"root@123\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21721300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "I click the Sign In button",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:98"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 350146899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "I should be on the dashboard page",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:124"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5008844200,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"http://localhost:5173/\u001b[7mdashboard\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"http://localhost:5173/\u001b[7mlogin\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"to.have.url\" with timeout 5000ms\u001b[22m\n\u001b[2m    12 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at captureRawStack (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toHaveURL (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at World.<anonymous> (D:\\PROJECTS\\reports\\Automation\\steps\\stepdef.steps.ts:128:24)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 734451600
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "test-suite;verify-non-valid-users-cannot-login-(negative-cases)",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "verify non valid users cannot login (negative cases)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 2249527800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "I launch the browser",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 8337100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I navigate to Application",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1508311099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "I enter username \"ro#$%^otw\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 162445999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I enter password \"pwdpew\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31786299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "I click the Sign In button",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:98"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 358872699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "I should be on the dashboard page",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:124"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5004625599,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"http://localhost:5173/\u001b[7mdashboard\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"http://localhost:5173/\u001b[7mlogin\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"to.have.url\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at captureRawStack (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toHaveURL (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at World.<anonymous> (D:\\PROJECTS\\reports\\Automation\\steps\\stepdef.steps.ts:128:24)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 587583199
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "test-suite;verify-non-valid-users-cannot-login-(negative-cases)",
+        "keyword": "Scenario",
+        "line": 30,
+        "name": "verify non valid users cannot login (negative cases)",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1918136500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 19,
+            "name": "I launch the browser",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2198300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I navigate to Application",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:59"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 639832500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 21,
+            "name": "I enter username \"root\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:72"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 406206000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 22,
+            "name": "I enter password \"rootw@123\"",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:85"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 763733999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 23,
+            "name": "I click the Sign In button",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:98"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 765871299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "I should be on the dashboard page",
+            "match": {
+              "location": "steps\\stepdef.steps.ts:124"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 5005698099,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mpage\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nExpected: \u001b[32m\"http://localhost:5173/\u001b[7mdashboard\u001b[27m\"\u001b[39m\nReceived: \u001b[31m\"http://localhost:5173/\u001b[7mlogin\u001b[27m\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"to.have.url\" with timeout 5000ms\u001b[22m\n\u001b[2m    14 × unexpected value \"http://localhost:5173/login\"\u001b[22m\n\n    at captureRawStack (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright-core\\lib\\coreBundle.js:3172:17)\n    at callMatcherAsStep (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright\\lib\\matchers\\expect.js:12877:57)\n    at Object.toHaveURL (D:\\PROJECTS\\reports\\Automation\\node_modules\\playwright\\lib\\matchers\\expect.js:12867:23)\n    at World.<anonymous> (D:\\PROJECTS\\reports\\Automation\\steps\\stepdef.steps.ts:128:24)"
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 586001199
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "test-suite",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Test Suite",
+    "tags": [],
+    "uri": "features\\test.feature"
+  }
+]
