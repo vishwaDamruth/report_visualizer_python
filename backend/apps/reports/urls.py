@@ -1,10 +1,20 @@
 from django.urls import path
 
-from .views import ProjectReportRunListView, ReportRunDetailView, ReportUploadView
+from .views import (
+    ProjectDashboardView,
+    ProjectReportRunListView,
+    ReportRunDetailView,
+    ReportUploadView,
+)
 
 app_name = "reports"
 
 urlpatterns = [
+    path(
+        "projects/<int:project_id>/dashboard/",
+        ProjectDashboardView.as_view(),
+        name="project-dashboard",
+    ),
     path(
         "reports/<int:report_run_id>/",
         ReportRunDetailView.as_view(),

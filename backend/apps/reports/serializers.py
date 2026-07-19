@@ -5,7 +5,7 @@ from .models import ReportRun, TestExecution
 
 class TestExecutionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = TestExecution
+        model = TestExecution   
         fields = [
             "id", "external_id", "feature", "suite", "scenario", "status",
             "duration", "error_message", "tags", "file_path", "line_number",

@@ -9,8 +9,26 @@ from rest_framework.views import APIView
 from apps.projects.models import Project
 
 from .models import ReportRun
+from .dashboard_serializers import ProjectDashboardSerializer
+from .history_filters import ReportRunHistoryFilterSerializer
+from .pagination import ProjectReportRunPagination
 from .serializers import ReportRunDetailSerializer, ReportRunListSerializer
-from .services import ReportIngestionError, ReportIngestionService
+from .services import (
+    ReportIngestionError,
+    ReportIngestionService,
+    ReportRunDeletionService,
+    ReportRunHistoryService,
+)
+from .services.dashboard_service import ProjectDashboardService
+
+
+class ProjectDashboardView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, project_id):
+        project = get_object_or_404(Project, pk=project_id, created_by=request.user)
+        dashboard = ProjectDashboardService.build(project)
+        return Response(ProjectDashboardSerializer(dashboard).data)
 
 
 class ReportUploadView(APIView):
@@ -46,6 +64,7 @@ class ReportUploadView(APIView):
 class ProjectReportRunListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ReportRunListSerializer
+    pagination_class = ProjectReportRunPagination
 
     def get_queryset(self):
         project = get_object_or_404(
@@ -53,14 +72,17 @@ class ProjectReportRunListView(generics.ListAPIView):
             pk=self.kwargs["project_id"],
             created_by=self.request.user,
         )
-        return (
-            ReportRun.objects.filter(project=project)
-            .select_related("project", "uploaded_by")
-            .order_by("-created_at")
+        filter_serializer = ReportRunHistoryFilterSerializer(
+            data=self.request.query_params
+        )
+        filter_serializer.is_valid(raise_exception=True)
+        return ReportRunHistoryService.get_queryset(
+            project,
+            filter_serializer.validated_data,
         )
 
 
-class ReportRunDetailView(generics.RetrieveAPIView):
+class ReportRunDetailView(generics.RetrieveDestroyAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ReportRunDetailSerializer
     lookup_url_kwarg = "report_run_id"
@@ -71,3 +93,6 @@ class ReportRunDetailView(generics.RetrieveAPIView):
             .select_related("project", "uploaded_by")
             .prefetch_related("executions")
         )
+
+    def perform_destroy(self, instance):
+        ReportRunDeletionService.delete(instance)
