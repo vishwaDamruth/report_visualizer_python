@@ -24,10 +24,10 @@ class ReportRunDeleteApiTests(APITestCase):
         user_model = get_user_model()
         self.user = user_model.objects.create_user(username="delete-owner")
         self.other_user = user_model.objects.create_user(username="other-delete-owner")
-        self.project = Project.objects.create(name="Delete Project", created_by=self.user)
+        self.project = Project.objects.create(name="Delete Project", owner=self.user)
         self.other_project = Project.objects.create(
             name="Private Delete Project",
-            created_by=self.other_user,
+            owner=self.other_user,
         )
         self.report_run = self._create_run(self.project, "delete-me.json")
         self.url = reverse("reports:report-run-detail", args=[self.report_run.pk])
@@ -35,7 +35,7 @@ class ReportRunDeleteApiTests(APITestCase):
     def _create_run(self, project, filename):
         report_run = ReportRun(
             project=project,
-            uploaded_by=project.created_by,
+            uploaded_by=project.owner,
             framework=ReportRun.Framework.CUCUMBER,
             original_filename=filename,
             status=ReportRun.Status.COMPLETED,

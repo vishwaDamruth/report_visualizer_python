@@ -4,8 +4,8 @@ from .models import Project
 
 class ProjectSerializer(serializers.ModelSerializer):
 
-    created_by = serializers.ReadOnlyField(
-        source="created_by.username"
+    owner = serializers.ReadOnlyField(
+        source="owner.username"
     )
 
 
@@ -17,7 +17,7 @@ class ProjectSerializer(serializers.ModelSerializer):
             "id",
             "name",
             "description",
-            "created_by",
+            "owner",
             "created_at",
             "updated_at",
         ]

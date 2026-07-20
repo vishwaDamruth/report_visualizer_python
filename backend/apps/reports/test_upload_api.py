@@ -41,7 +41,7 @@ class ReportUploadApiTests(APITestCase):
         )
         self.project = Project.objects.create(
             name="Upload Project",
-            created_by=self.user,
+            owner=self.user,
         )
         self.url = reverse("reports:report-upload", args=[self.project.pk])
 

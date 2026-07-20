@@ -26,7 +26,7 @@ class ProjectDashboardView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request, project_id):
-        project = get_object_or_404(Project, pk=project_id, created_by=request.user)
+        project = get_object_or_404(Project, pk=project_id, owner=request.user)
         dashboard = ProjectDashboardService.build(project)
         return Response(ProjectDashboardSerializer(dashboard).data)
 
@@ -39,7 +39,7 @@ class ReportUploadView(APIView):
         project = get_object_or_404(
             Project,
             pk=project_id,
-            created_by=request.user,
+            owner=request.user,
         )
 
         try:
@@ -70,7 +70,7 @@ class ProjectReportRunListView(generics.ListAPIView):
         project = get_object_or_404(
             Project,
             pk=self.kwargs["project_id"],
-            created_by=self.request.user,
+            owner=self.request.user,
         )
         filter_serializer = ReportRunHistoryFilterSerializer(
             data=self.request.query_params
@@ -89,7 +89,7 @@ class ReportRunDetailView(generics.RetrieveDestroyAPIView):
 
     def get_queryset(self):
         return (
-            ReportRun.objects.filter(project__created_by=self.request.user)
+            ReportRun.objects.filter(project__owner=self.request.user)
             .select_related("project", "uploaded_by")
             .prefetch_related("executions")
         )

@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 import { useAuth } from "../contexts/AuthContext";
+import { LoadingSkeleton } from "./ui";
 
 
 function ProtectedRoute({
@@ -20,9 +21,9 @@ function ProtectedRoute({
     if(loading){
 
         return (
-            <div>
-                Loading...
-            </div>
+            <main className="min-h-screen bg-slate-950 px-4 py-16 text-white">
+                <LoadingSkeleton id="authentication-loading-state" testId="authentication-loading" label="Restoring your session" rows={4} />
+            </main>
         );
 
     }
@@ -32,7 +33,7 @@ function ProtectedRoute({
     if(!user){
 
         return (
-            <Navigate to="/login"/>
+            <Navigate to="/login" replace />
         );
 
     }

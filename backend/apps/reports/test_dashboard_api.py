@@ -16,15 +16,15 @@ class ProjectDashboardApiTests(APITestCase):
         user_model = get_user_model()
         self.user = user_model.objects.create_user(username="dashboard-owner")
         self.other_user = user_model.objects.create_user(username="other-dashboard-owner")
-        self.project = Project.objects.create(name="Dashboard Project", created_by=self.user)
-        self.other_project = Project.objects.create(name="Private Project", created_by=self.other_user)
+        self.project = Project.objects.create(name="Dashboard Project", owner=self.user)
+        self.other_project = Project.objects.create(name="Private Project", owner=self.other_user)
         self.url = reverse("reports:project-dashboard", args=[self.project.pk])
 
     def _run(self, filename, project=None, **overrides):
         project = project or self.project
         values = {
             "project": project,
-            "uploaded_by": project.created_by,
+            "uploaded_by": project.owner,
             "framework": ReportRun.Framework.CUCUMBER,
             "raw_file": f"reports/{filename}",
             "original_filename": filename,

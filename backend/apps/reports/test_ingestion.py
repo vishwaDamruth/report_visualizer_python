@@ -35,7 +35,7 @@ class ReportIngestionServiceTests(TestCase):
         )
         self.project = Project.objects.create(
             name="Ingestion Project",
-            created_by=self.user,
+            owner=self.user,
         )
 
     def _uploaded_fixture(self, name="cucumber-report.json"):

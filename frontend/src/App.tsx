@@ -6,6 +6,11 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
 import ReportRunDetails from "./pages/ReportRunDetails";
+import AppShell from "./components/AppShell";
+
+function ProtectedAppPage({ children }: { children: React.ReactNode }) {
+  return <ProtectedRoute><AppShell>{children}</AppShell></ProtectedRoute>;
+}
 
 function App() {
   return (
@@ -16,31 +21,25 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
+            <ProtectedAppPage><Dashboard /></ProtectedAppPage>
           }
         />
 
         <Route path="*" element={<Navigate to="/login" />} />
 
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects" element={<ProtectedAppPage><Projects /></ProtectedAppPage>} />
 
         <Route
           path="/projects/:id"
           element={
-            <ProtectedRoute>
-              <ProjectDetails />
-            </ProtectedRoute>
+            <ProtectedAppPage><ProjectDetails /></ProtectedAppPage>
           }
         />
 
         <Route
           path="/reports/:reportRunId"
           element={
-            <ProtectedRoute>
-              <ReportRunDetails />
-            </ProtectedRoute>
+            <ProtectedAppPage><ReportRunDetails /></ProtectedAppPage>
           }
         />
       </Routes>

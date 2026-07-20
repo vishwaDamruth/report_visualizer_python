@@ -15,11 +15,11 @@ class ReportRunDetailApiTests(APITestCase):
         self.other_user = user_model.objects.create_user(username="other-detail-owner")
         self.project = Project.objects.create(
             name="Detail Project",
-            created_by=self.user,
+            owner=self.user,
         )
         self.other_project = Project.objects.create(
             name="Other Detail Project",
-            created_by=self.other_user,
+            owner=self.other_user,
         )
         self.report_run = self._create_run(self.project, "detail-report.json")
         self.execution = TestExecution.objects.create(
@@ -40,7 +40,7 @@ class ReportRunDetailApiTests(APITestCase):
     def _create_run(self, project, filename):
         return ReportRun.objects.create(
             project=project,
-            uploaded_by=project.created_by,
+            uploaded_by=project.owner,
             framework=ReportRun.Framework.CUCUMBER,
             raw_file=f"reports/{filename}",
             original_filename=filename,

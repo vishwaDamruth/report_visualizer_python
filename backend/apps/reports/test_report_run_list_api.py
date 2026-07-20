@@ -18,15 +18,15 @@ class ProjectReportRunListApiTests(APITestCase):
         self.other_user = user_model.objects.create_user(username="other-history-owner")
         self.project = Project.objects.create(
             name="History Project",
-            created_by=self.user,
+            owner=self.user,
         )
         self.second_project = Project.objects.create(
             name="Second Project",
-            created_by=self.user,
+            owner=self.user,
         )
         self.other_project = Project.objects.create(
             name="Other User Project",
-            created_by=self.other_user,
+            owner=self.other_user,
         )
         self.url = reverse(
             "reports:project-report-run-list",
@@ -36,7 +36,7 @@ class ProjectReportRunListApiTests(APITestCase):
     def _create_run(self, project, filename, **overrides):
         values = {
             "project": project,
-            "uploaded_by": project.created_by,
+            "uploaded_by": project.owner,
             "framework": ReportRun.Framework.CUCUMBER,
             "raw_file": f"reports/{filename}",
             "original_filename": filename,

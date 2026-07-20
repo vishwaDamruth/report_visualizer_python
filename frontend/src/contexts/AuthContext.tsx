@@ -45,6 +45,12 @@ export function AuthProvider({
 
     const [loading, setLoading] = useState(true);
 
+    const logout = () => {
+        localStorage.removeItem("access");
+        localStorage.removeItem("refresh");
+        setUser(null);
+    };
+
 
 
     useEffect(() => {
@@ -131,18 +137,6 @@ export function AuthProvider({
 
 
 
-    const logout = () => {
-
-        localStorage.removeItem("access");
-
-        localStorage.removeItem("refresh");
-
-        setUser(null);
-
-    };
-
-
-
     return (
 
         <AuthContext.Provider
@@ -164,6 +158,8 @@ export function AuthProvider({
 
 
 
+// Context and its hook intentionally share a module so consumers use one public API.
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
 
     const context = useContext(AuthContext);

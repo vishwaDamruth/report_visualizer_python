@@ -19,7 +19,7 @@ class ReportsFoundationTests(TestCase):
         )
         self.project = Project.objects.create(
             name="Checkout Automation",
-            created_by=self.user,
+            owner=self.user,
         )
         self.report_run = ReportRun.objects.create(
             project=self.project,
